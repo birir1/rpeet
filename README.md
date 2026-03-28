@@ -11,6 +11,7 @@ Community management platform for Kenyans living in South Korea.
 ## Setup
 
 See [backend/README.md](backend/README.md) for API documentation and setup instructions.
+See [frontend/README.md](frontend/README.md) for the whole presentation layer
 
 ## Deployment
 
