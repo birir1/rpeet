@@ -1,0 +1,27 @@
+FROM php:8.3-fpm
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nginx \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-install zip pdo_mysql \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /app
+
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+COPY . .
+RUN composer dump-autoload --optimize
+
+RUN chown -R www-data:www-data storage bootstrap/cache
+
+# Nginx config
+COPY docker/nginx.conf /etc/nginx/sites-available/default
+
+EXPOSE 80
+
+CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]

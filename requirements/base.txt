@@ -1,0 +1,15 @@
+Django>=5.0,<7.0
+djangorestframework>=3.15
+djangorestframework-simplejwt>=5.3
+django-cors-headers>=4.3
+django-ratelimit>=4.1
+bleach>=6.1
+Pillow>=10.2
+weasyprint>=62.0
+qrcode>=7.4
+celery>=5.3
+redis>=5.0
+psycopg2-binary>=2.9
+sentry-sdk[django]>=2.0
+pytest>=8.0
+pytest-django>=4.8
