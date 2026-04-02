@@ -620,10 +620,10 @@ class MembershipRequestView(views.APIView):
         try:
             fee_setting = SiteSetting.objects.get(key='membership_fee')
             fee_amount = fee_setting.value.get('amount', 50000)
-            treasurer_email = fee_setting.value.get('treasurer_email', 'treasurer@kck.or.ke')
+            treasurer_email = fee_setting.value.get('treasurer_email', 'finance@kenyakorea.com')
         except SiteSetting.DoesNotExist:
             fee_amount = 50000
-            treasurer_email = "treasurer@kck.or.ke"
+            treasurer_email = "finance@kenyakorea.com"
 
         # Check if user already has an active or pending membership
         existing = Membership.objects.filter(user=request.user).order_by("-expiry_date").first()

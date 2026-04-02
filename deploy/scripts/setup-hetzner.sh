@@ -8,8 +8,8 @@
 
 set -euo pipefail
 
-DOMAIN="${1:-kck.or.ke}"
-EMAIL="${2:-admin@kck.or.ke}"
+DOMAIN="${1:-kenyakorea.com}"
+EMAIL="${2:-admin@kenyakorea.com}"
 APP_DIR="/opt/kck/backend"
 
 echo "=== KCK Server Setup ==="
@@ -68,9 +68,9 @@ DB_PASSWORD=CHANGE_ME_STRONG_PASSWORD_HERE
 
 # ─── Django ────────────────────────────────────
 DJANGO_SECRET_KEY=CHANGE_ME_GENERATE_WITH_python3_-c_"from_django.core.management.utils_import_get_random_secret_key;print(get_random_secret_key())"
-DJANGO_ALLOWED_HOSTS=kck.or.ke,www.kck.or.ke
-CORS_ALLOWED_ORIGINS=https://kck.or.ke,https://www.kck.or.ke
-KCK_BASE_URL=https://kck.or.ke
+DJANGO_ALLOWED_HOSTS=kenyakorea.com,www.kenyakorea.com
+CORS_ALLOWED_ORIGINS=https://kenyakorea.com,https://www.kenyakorea.com
+KCK_BASE_URL=https://kenyakorea.com
 
 # ─── Laravel ───────────────────────────────────
 APP_KEY=base64:GENERATE_WITH_php_artisan_key:generate
@@ -81,7 +81,7 @@ APP_DEBUG=false
 EMAIL_HOST=smtp.gmail.com
 EMAIL_HOST_USER=your-email@gmail.com
 EMAIL_HOST_PASSWORD=your-app-password
-DEFAULT_FROM_EMAIL=KCK <noreply@kck.or.ke>
+DEFAULT_FROM_EMAIL=KCK <noreply@kenyakorea.com>
 
 # ─── Optional ──────────────────────────────────
 SENTRY_DSN=

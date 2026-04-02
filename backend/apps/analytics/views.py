@@ -152,13 +152,13 @@ class MembershipFeeView(views.APIView):
         return Response({
             "amount": 50000,
             "currency": "KRW",
-            "treasurer_email": "treasurer@kck.or.ke",
+            "treasurer_email": "finance@kenyakorea.com",
         })
 
     def put(self, request):
         amount = request.data.get("amount", 50000)
         currency = request.data.get("currency", "KRW")
-        treasurer_email = request.data.get("treasurer_email", "treasurer@kck.or.ke")
+        treasurer_email = request.data.get("treasurer_email", "finance@kenyakorea.com")
 
         value = {
             "amount": amount,

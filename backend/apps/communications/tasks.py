@@ -255,10 +255,10 @@ def generate_comm_image_task(communication_id):
         rx = PAGE_W - RIGHT
         cy = 75
         # Email
-        _right(draw, "kenyakorea@gmail.com", cy, f_contact, GRAY, rx)
+        _right(draw, "info@kenyakorea.com", cy, f_contact, GRAY, rx)
         cy += 38
         # Website
-        _right(draw, "www.kenyakorea.org", cy, f_contact, GRAY, rx)
+        _right(draw, "www.kenyakorea.com", cy, f_contact, GRAY, rx)
         cy += 38
         # Phone
         _right(draw, "010 5084 8654", cy, f_contact, GRAY, rx)
@@ -408,7 +408,7 @@ def generate_comm_image_task(communication_id):
 
         # Footer text
         fy += 15
-        _center(draw, "Kenya Community in Korea  |  www.kenyakorea.org  |  kenyakorea@gmail.com",
+        _center(draw, "Kenya Community in Korea  |  www.kenyakorea.com  |  info@kenyakorea.com",
                 fy, f_footer, MUTED)
 
         # Bottom tri-color bar

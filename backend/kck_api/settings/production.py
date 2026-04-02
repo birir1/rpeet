@@ -68,7 +68,7 @@ CELERY_TASK_EAGER_PROPAGATES = False
 STATIC_ROOT = os.environ.get("STATIC_ROOT", "/var/www/kck/static/")
 MEDIA_ROOT = os.environ.get("MEDIA_ROOT", "/var/www/kck/media/")
 
-KCK_BASE_URL = os.environ.get("KCK_BASE_URL", "https://kck.or.ke")
+KCK_BASE_URL = os.environ.get("KCK_BASE_URL", "https://kenyakorea.com")
 
 # -------------------------------------------------------------------
 # Email
@@ -79,7 +79,7 @@ EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() == 'true'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@kck.or.ke')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@kenyakorea.com')
 
 # -------------------------------------------------------------------
 # Cache - Redis in production

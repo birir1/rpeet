@@ -420,7 +420,7 @@ def generate_cert_image_task(certificate_id):
 
         # Website row (below cert number row)
         row2_y = row1_y + 22
-        _center(draw, "www.kenyakorea.org  |  kenyakorea@gmail.com  |  010 5084 8654", row2_y, f_footer, GRAY)
+        _center(draw, "www.kenyakorea.com  |  info@kenyakorea.com  |  010 5084 8654", row2_y, f_footer, GRAY)
 
         # ============================================================
         # SAVE PNG + PDF

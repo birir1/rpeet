@@ -12,11 +12,11 @@ from apps.users.models import Membership, User
 
 # Leader emails that should never be deleted
 LEADER_EMAILS = {
-    "chairman@kck.or.ke",
-    "secretary@kck.or.ke",
-    "treasurer@kck.or.ke",
-    "welfare@kck.or.ke",
-    "committee@kck.or.ke",
+    "president@kenyakorea.com",
+    "secgen@kenyakorea.com",
+    "finance@kenyakorea.com",
+    "welfare@kenyakorea.com",
+    "committee@kenyakorea.com",
 }
 
 # Realistic Kenyan names
@@ -98,7 +98,7 @@ class Command(BaseCommand):
         # 1. Create leader users
         # ---------------------------------------------------------------
         chairman_user = self._get_or_create_user(
-            email="chairman@kck.or.ke",
+            email="president@kenyakorea.com",
             full_name="James Mwangi",
             city="seoul",
             category="professional",
@@ -109,7 +109,7 @@ class Command(BaseCommand):
         )
 
         secretary_user = self._get_or_create_user(
-            email="secretary@kck.or.ke",
+            email="secgen@kenyakorea.com",
             full_name="Grace Wanjiku",
             city="seoul",
             category="professional",
@@ -120,7 +120,7 @@ class Command(BaseCommand):
         )
 
         treasurer_user = self._get_or_create_user(
-            email="treasurer@kck.or.ke",
+            email="finance@kenyakorea.com",
             full_name="Peter Ochieng",
             city="incheon",
             category="worker",
@@ -131,7 +131,7 @@ class Command(BaseCommand):
         )
 
         welfare_user = self._get_or_create_user(
-            email="welfare@kck.or.ke",
+            email="welfare@kenyakorea.com",
             full_name="Mary Akinyi",
             city="busan",
             category="worker",
@@ -142,7 +142,7 @@ class Command(BaseCommand):
         )
 
         committee_user = self._get_or_create_user(
-            email="committee@kck.or.ke",
+            email="committee@kenyakorea.com",
             full_name="David Kamau",
             city="daegu",
             category="student",
@@ -153,7 +153,7 @@ class Command(BaseCommand):
         )
 
         regular_user = self._get_or_create_user(
-            email="member@kck.or.ke",
+            email="member@kenyakorea.com",
             full_name="Sarah Njeri",
             city="seoul",
             category="student",
@@ -292,18 +292,18 @@ class Command(BaseCommand):
         self.stdout.write(f"Verified: {User.objects.filter(is_deleted=False, is_verified=True).count()}")
         self.stdout.write(f"Active memberships: {Membership.objects.filter(status='active').count()}")
         self.stdout.write("\nTest accounts:")
-        self.stdout.write("  chairman@kck.or.ke  / Chairman@2025")
-        self.stdout.write("  secretary@kck.or.ke / Secretary@2025")
-        self.stdout.write("  treasurer@kck.or.ke / Treasurer@2025")
-        self.stdout.write("  welfare@kck.or.ke   / Welfare@2025")
-        self.stdout.write("  committee@kck.or.ke / Committee@2025")
-        self.stdout.write("  member@kck.or.ke    / Member@2025")
+        self.stdout.write("  president@kenyakorea.com  / Chairman@2025")
+        self.stdout.write("  secgen@kenyakorea.com / Secretary@2025")
+        self.stdout.write("  finance@kenyakorea.com / Treasurer@2025")
+        self.stdout.write("  welfare@kenyakorea.com   / Welfare@2025")
+        self.stdout.write("  committee@kenyakorea.com / Committee@2025")
+        self.stdout.write("  member@kenyakorea.com    / Member@2025")
 
     def _clean_existing_data(self):
         """Delete non-leader users and their memberships. Preserve leader users."""
         self.stdout.write("  Cleaning existing data (preserving leaders)...")
         # Delete memberships for non-leader users
-        non_leader_users = User.objects.exclude(email__in=LEADER_EMAILS).exclude(email="member@kck.or.ke")
+        non_leader_users = User.objects.exclude(email__in=LEADER_EMAILS).exclude(email="member@kenyakorea.com")
         membership_count = Membership.objects.filter(user__in=non_leader_users).count()
         Membership.objects.filter(user__in=non_leader_users).delete()
         user_count = non_leader_users.count()
@@ -339,4 +339,4 @@ class Command(BaseCommand):
     @staticmethod
     def _name_to_email(name):
         parts = name.lower().split()
-        return f"{parts[0]}.{parts[-1]}@kck.or.ke"
+        return f"{parts[0]}.{parts[-1]}@kenyakorea.com"

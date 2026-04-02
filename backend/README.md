@@ -136,11 +136,11 @@ The API is now available at `http://127.0.0.1:8000/kck/`.
 
 | Role | Email | Password |
 |------|-------|----------|
-| Chairman | chairman@kck.or.ke | Chairman@2025 |
-| Secretary | secretary@kck.or.ke | Secretary@2025 |
-| Treasurer | treasurer@kck.or.ke | Treasurer@2025 |
-| Welfare | welfare@kck.or.ke | Welfare@2025 |
-| Committee | committee@kck.or.ke | Committee@2025 |
+| Chairman | president@kenyakorea.com | Chairman@2025 |
+| Secretary | secgen@kenyakorea.com | Secretary@2025 |
+| Treasurer | finance@kenyakorea.com | Treasurer@2025 |
+| Welfare | welfare@kenyakorea.com | Welfare@2025 |
+| Committee | committee@kenyakorea.com | Committee@2025 |
 
 ---
 

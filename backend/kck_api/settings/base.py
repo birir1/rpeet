@@ -212,7 +212,7 @@ CACHES = {
 # Email - Console backend for development (prints to console)
 # -------------------------------------------------------------------
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FROM_EMAIL = "KCK <noreply@kenyakorea.org>"
+DEFAULT_FROM_EMAIL = "KCK <noreply@kenyakorea.com>"
 
 # -------------------------------------------------------------------
 # Logging - Console output for development
