@@ -116,6 +116,15 @@ class UserDetailSerializer(serializers.ModelSerializer):
     def get_membership_status(self, obj):
         return obj.membership_status
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        # Fallback to default avatar if no photo uploaded
+        if not data.get("photo"):
+            request = self.context.get("request")
+            default = "/static/images/default-avatar.png"
+            data["photo"] = request.build_absolute_uri(default) if request else default
+        return data
+
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -243,6 +252,7 @@ class MeSerializer(serializers.ModelSerializer):
     membership_status = serializers.SerializerMethodField()
     is_leader = serializers.SerializerMethodField()
     leader_role = serializers.SerializerMethodField()
+    photo = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -254,12 +264,20 @@ class MeSerializer(serializers.ModelSerializer):
             "korean_phone",
             "city",
             "category",
+            "photo",
             "is_verified",
             "email_verified",
             "membership_status",
             "is_leader",
             "leader_role",
         ]
+
+    def get_photo(self, obj):
+        request = self.context.get("request")
+        if obj.photo:
+            return request.build_absolute_uri(obj.photo.url) if request else obj.photo.url
+        default = "/static/images/default-avatar.png"
+        return request.build_absolute_uri(default) if request else default
 
     def get_membership_status(self, obj):
         return obj.membership_status

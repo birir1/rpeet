@@ -33,12 +33,16 @@ class LeaderListSerializer(serializers.ModelSerializer):
         ]
 
     def get_photo(self, obj):
+        request = self.context.get("request")
         if obj.user.photo:
-            request = self.context.get("request")
             if request:
                 return request.build_absolute_uri(obj.user.photo.url)
             return obj.user.photo.url
-        return None
+        # Fallback to default avatar
+        default = "/static/images/default-avatar.png"
+        if request:
+            return request.build_absolute_uri(default)
+        return default
 
 
 class LeaderCreateSerializer(serializers.ModelSerializer):
