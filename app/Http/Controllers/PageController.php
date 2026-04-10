@@ -2,74 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    // Home & About
-    public function home() { return view('frontend.home'); }
-    public function about() { return view('frontend.about'); }
-    public function contact() { return view('frontend.contacts'); }
+    // ================= MAIN =================
+    public function home() { return view('pages.home'); }
+    public function about() { return view('pages.about'); }
+    public function contact() { return view('pages.contacts'); }
+    public function visitus() { return view('pages.visitus'); }
+    public function message() { return view('pages.sendusamessage'); }
 
-    // Team & Ambassador
-    public function teammembers() { return view('frontend.teammembers'); }
-    public function ambassadorprofile() { return view('frontend.ambassadorprofile'); }
-    public function deputyambassadorprofile() { return view('frontend.deputyambassadorprofile'); }
 
-    // Visas & Travel
-    public function visitus() { return view('frontend.visitus'); }
-    public function visatypes() { return view('frontend.visatypes'); }
-    public function visaservices() { return view('frontend.visaservices'); }
-    public function visaissues() { return view('frontend.visaissues'); }
-    public function visaFAQs() { return view('frontend.visaFAQs'); }
-    public function planyourvisit() { return view('frontend.planyourvisit'); }
-    public function travelDestinations() { return view('frontend.traveldestinations'); }
-    public function traditionsandfestivals() { return view('frontend.traditionsandfestivals'); }
-    public function supportingourpeople() { return view('frontend.supportingourpeople'); }
-    public function studyinkenya() { return view('frontend.studyinkenya'); }
+    // ================= EMBASSY =================
+    public function ambassador() { return view('embassy.ambassadorprofile'); }
+    public function embassyHistory() { return view('embassy.ourhistory'); }
 
-    // Services
-    public function servicesqueries() { return view('frontend.servicesqueries'); }
-    public function serviceshighlights() { return view('frontend.serviceshighlights'); }
-    public function sendusamessage() { return view('frontend.sendusamessage'); }
-    public function requestapassport() { return view('frontend.requestapassport'); }
-    public function registerforevents() { return view('frontend.registerforevents'); }
-    public function pressreleases() { return view('frontend.pressreleases'); }
 
-    // Education & Scholarships
-    public function scholarshipprograms() { return view('frontend.scholarshipprograms'); }
-    public function applyforscholarship() { return view('frontend.applyforscholarship'); }
-    public function studyinkenya2() { return view('frontend.studyinkenya'); }
+    // ================= VISA =================
+    public function visatypes() { return view('services.visatypes'); }
+    public function visaservices() { return view('visa.services'); }
+    public function visaissues() { return view('services.visa.issues'); }
+    public function faqs() { return view('services.visa.faqs'); }
 
-    // FAQs & General Questions
-    public function passportFAQs() { return view('frontend.passportFAQs'); }
-    public function consularFAQs() { return view('frontend.consularFAQs'); }
-    public function generalquestions() { return view('frontend.generalquestions'); }
-    public function FAQs() { return view('frontend.FAQs'); }
 
-    // Economy & Investment
-    public function overviewoftheeconomy() { return view('frontend.overviewoftheeconomy'); }
-    public function economictrends() { return view('frontend.economictrends'); }
-    public function investmentopportunities() { return view('frontend.investmentopportunities'); }
-    public function discoverkenya() { return view('frontend.discoverkenya'); }
+    // ================= KENYA =================
+    public function discover() { return view('discover.index'); }
 
-    // Culture & Events
-    public function ourvision() { return view('frontend.ourvision'); }
-    public function ourmissionandvision() { return view('frontend.ourmissionandvision'); }
-    public function ourmision() { return view('frontend.ourmision'); }
-    public function ourlocation() { return view('frontend.ourlocation'); }
-    public function ourhistory() { return view('frontend.ourhistory'); }
-    public function openinghours() { return view('frontend.openinghours'); }
-    public function missioninkorea() { return view('frontend.missioninkorea'); }
-    public function kenyaswildlife() { return view('frontend.kenyaswildlife'); }
-    public function howtoapplyforapassport() { return view('frontend.howtoapplyforapassport'); }
-    public function eventhighlights() { return view('frontend.eventhighlights'); }
-    public function eventcalender() { return view('frontend.eventcalender'); }
-    public function embassyannouncements() { return view('frontend.embassyannouncements'); }
-    public function culturalhighligts() { return view('frontend.culturalhighligts'); }
-    public function calturegallery() { return view('frontend.calturegallery'); }
-    public function assistanceforcitizens() { return view('frontend.assistanceforcitizens'); }
-    public function applyforavisa() { return view('frontend.applyforavisa'); }
-    public function aninspiringquote() { return view('frontend.aninspiringquote'); }
+
+    // ================= COMMUNITY =================
+    public function communityIndex() { return view('community.index'); }
+    public function communityHistory() { return view('community.history'); }
+    public function location() { return view('community.location'); }
+    public function hours() { return view('community.hours'); }
+    public function mission() { return view('community.mission'); }
+    public function vision() { return view('community.vision'); }
+
+
+    // ================= SERVICES =================
+    public function passportRequest() { return view('services.passport.request'); }
+    public function passportApply() { return view('services.passport.apply'); }
+    public function queries() { return view('services.queries'); }
+    public function highlights() { return view('services.highlights'); }
+
+
+    // ================= EVENTS =================
+    public function events() { return view('events.index'); }
+    public function eventRegister() { return view('events.register'); }
+    public function eventCalendar() { return view('events.calendar'); }
+    public function eventHighlights() { return view('events.highlights'); }
 }

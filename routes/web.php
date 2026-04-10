@@ -3,71 +3,134 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
-// Home & basic pages
+/*
+|--------------------------------------------------------------------------
+| MAIN PAGES
+|--------------------------------------------------------------------------
+*/
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-// Team & Ambassador
-Route::get('/team-members', [PageController::class, 'teammembers'])->name('team.members');
-Route::get('/ambassador-profile', [PageController::class, 'ambassadorprofile'])->name('ambassador.profile');
-Route::get('/deputy-ambassador-profile', [PageController::class, 'deputyambassadorprofile'])->name('deputy.ambassador.profile');
 
-// Visas & Travel
-Route::get('/visit-us', [PageController::class, 'visitus'])->name('visit.us');
-Route::get('/visa-types', [PageController::class, 'visatypes'])->name('visa.types');
-Route::get('/visa-services', [PageController::class, 'visaservices'])->name('visa.services');
-Route::get('/visa-issues', [PageController::class, 'visaissues'])->name('visa.issues');
-Route::get('/visa-faqs', [PageController::class, 'visaFAQs'])->name('visa.faqs');
-Route::get('/plan-your-visit', [PageController::class, 'planyourvisit'])->name('plan.visit');
-Route::get('/travel-destinations', [PageController::class, 'travelDestinations'])->name('travel.destinations');
-Route::get('/traditions-and-festivals', [PageController::class, 'traditionsandfestivals'])->name('traditions.festivals');
-Route::get('/supporting-our-people', [PageController::class, 'supportingourpeople'])->name('supporting.people');
-Route::get('/study-in-kenya', [PageController::class, 'studyinkenya'])->name('study.kenya');
+/*
+|--------------------------------------------------------------------------
+| EMBASSY
+|--------------------------------------------------------------------------
+*/
+Route::prefix('embassy')->group(function () {
+    Route::get('/ambassador', [PageController::class, 'ambassador'])->name('embassy.ambassador');
+    Route::get('/history', [PageController::class, 'embassyHistory'])->name('embassy.history');
+});
 
-// Services
-Route::get('/services-queries', [PageController::class, 'servicesqueries'])->name('services.queries');
-Route::get('/services-highlights', [PageController::class, 'serviceshighlights'])->name('services.highlights');
-Route::get('/send-us-a-message', [PageController::class, 'sendusamessage'])->name('send.message');
-Route::get('/request-a-passport', [PageController::class, 'requestapassport'])->name('request.passport');
-Route::get('/register-for-events', [PageController::class, 'registerforevents'])->name('register.events');
-Route::get('/press-releases', [PageController::class, 'pressreleases'])->name('press.releases');
 
-// Education & Scholarships
-Route::get('/scholarship-programs', [PageController::class, 'scholarshipprograms'])->name('scholarship.programs');
-Route::get('/apply-for-scholarship', [PageController::class, 'applyforscholarship'])->name('apply.scholarship');
+/*
+|--------------------------------------------------------------------------
+| VISIT
+|--------------------------------------------------------------------------
+*/
+Route::get('/visit', [PageController::class, 'visitus'])->name('visit');
 
-// FAQs & General Questions
-Route::get('/passport-faqs', [PageController::class, 'passportFAQs'])->name('passport.faqs');
-Route::get('/consular-faqs', [PageController::class, 'consularFAQs'])->name('consular.faqs');
-Route::get('/general-questions', [PageController::class, 'generalquestions'])->name('general.questions');
-Route::get('/faqs', [PageController::class, 'FAQs'])->name('faqs');
 
-// Economy & Investment
-Route::get('/overview-of-the-economy', [PageController::class, 'overviewoftheeconomy'])->name('overview.economy');
-Route::get('/economic-trends', [PageController::class, 'economictrends'])->name('economic.trends');
-Route::get('/investment-opportunities', [PageController::class, 'investmentopportunities'])->name('investment.opportunities');
-Route::get('/discover-kenya', [PageController::class, 'discoverkenya'])->name('discover.kenya');
+/*
+|--------------------------------------------------------------------------
+| VISA
+|--------------------------------------------------------------------------
+*/
+Route::prefix('visa')->group(function () {
+    Route::get('/types', [PageController::class, 'visatypes'])->name('visa.types');
+    Route::get('/services', [PageController::class, 'visaservices'])->name('visa.services');
+    Route::get('/issues', [PageController::class, 'visaissues'])->name('visa.issues');
 
-// Culture & Events
-Route::get('/our-vision', [PageController::class, 'ourvision'])->name('our.vision');
-Route::get('/our-mission-and-vision', [PageController::class, 'ourmissionandvision'])->name('our.mission.vision');
-Route::get('/our-mision', [PageController::class, 'ourmision'])->name('our.mision');
-Route::get('/our-location', [PageController::class, 'ourlocation'])->name('our.location');
-Route::get('/our-history', [PageController::class, 'ourhistory'])->name('our.history');
-Route::get('/opening-hours', [PageController::class, 'openinghours'])->name('opening.hours');
-Route::get('/mission-in-korea', [PageController::class, 'missioninkorea'])->name('mission.korea');
-Route::get('/kenyas-wildlife', [PageController::class, 'kenyaswildlife'])->name('kenya.wildlife');
-Route::get('/how-to-apply-for-a-passport', [PageController::class, 'howtoapplyforapassport'])->name('apply.passport');
+    Route::get('/faqs', [PageController::class, 'faqs'])->name('visa.faqs');
 
-// Events & Announcements
-Route::get('/event-highlights', [PageController::class, 'eventhighlights'])->name('event.highlights');
-Route::get('/event-calendar', [PageController::class, 'eventcalender'])->name('event.calendar');
-Route::get('/embassy-announcements', [PageController::class, 'embassyannouncements'])->name('embassy.announcements');
+    Route::get('/apply', function () {
+        return redirect()->route('visa.services');
+    })->name('visa.apply');
+});
 
-// Culture & Citizens
-Route::get('/cultural-highlights', [PageController::class, 'culturalhighligts'])->name('cultural.highlights');
-Route::get('/culture-gallery', [PageController::class, 'calturegallery'])->name('culture.gallery');
-Route::get('/assistance-for-citizens', [PageController::class, 'assistanceforcitizens'])->name('assistance.citizens');
-Route::get('/apply-for-a-visa', [PageController::class, 'applyforavisa'])->name('apply.visa');
-Route::get('/an-inspiring-quote', [PageController::class, 'aninspiringquote'])->name('inspiring.quote');
+
+/*
+|--------------------------------------------------------------------------
+| SERVICES
+|--------------------------------------------------------------------------
+*/
+Route::prefix('services')->group(function () {
+    Route::get('/visa-types', [PageController::class, 'visatypes'])->name('services.visa.types');
+
+    Route::get('/passport-request', [PageController::class, 'passportRequest'])->name('services.passport.request');
+    Route::get('/passport-apply', [PageController::class, 'passportApply'])->name('services.passport.apply');
+    Route::get('/queries', [PageController::class, 'queries'])->name('services.queries');
+    Route::get('/highlights', [PageController::class, 'highlights'])->name('services.highlights');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| KENYA / DISCOVER
+|--------------------------------------------------------------------------
+*/
+Route::prefix('kenya')->group(function () {
+    Route::get('/discover', [PageController::class, 'discover'])->name('kenya.discover');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| COMMUNITY
+|--------------------------------------------------------------------------
+*/
+Route::prefix('community')->group(function () {
+    Route::get('/', [PageController::class, 'communityIndex'])->name('community.index');
+    Route::get('/history', [PageController::class, 'communityHistory'])->name('community.history');
+    Route::get('/location', [PageController::class, 'location'])->name('community.location');
+    Route::get('/hours', [PageController::class, 'hours'])->name('community.hours');
+    Route::get('/mission', [PageController::class, 'mission'])->name('community.mission');
+    Route::get('/vision', [PageController::class, 'vision'])->name('community.vision');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| EVENTS
+|--------------------------------------------------------------------------
+*/
+Route::prefix('events')->group(function () {
+    Route::get('/', [PageController::class, 'events'])->name('events');
+    Route::get('/register', [PageController::class, 'eventRegister'])->name('events.register');
+    Route::get('/calendar', [PageController::class, 'eventCalendar'])->name('events.calendar');
+    Route::get('/highlights', [PageController::class, 'eventHighlights'])->name('events.highlights');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| FAQS (FIXED - CLEAN VERSION)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('faqs')->group(function () {
+
+    Route::get('/', [PageController::class, 'faqs'])->name('faqs.index');
+
+    Route::get('/general', function () {
+        return view('faqs.general');
+    })->name('faqs.general');
+
+    Route::get('/passport', function () {
+        return view('faqs.passport');
+    })->name('faqs.passport');
+
+    Route::get('/consular', function () {
+        return view('faqs.consular');
+    })->name('faqs.consular');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| MESSAGES
+|--------------------------------------------------------------------------
+*/
+Route::get('/message', [PageController::class, 'message'])->name('message');Route::get('/message', function () {
+    return view('faqs.message');
+})->name('message');

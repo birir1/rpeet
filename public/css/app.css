@@ -1,0 +1,16 @@
+/* THEME COLORS */
+:root {
+    --primary-blue: #0B3D91;
+    --accent-red: #C8102E;
+    --dark-black: #000000;
+}
+
+/* Hover Effects */
+.nav-link:hover {
+    color: var(--accent-red) !important;
+}
+
+.dropdown-item:hover {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
